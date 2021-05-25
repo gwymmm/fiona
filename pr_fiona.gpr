@@ -1,0 +1,22 @@
+project pr_fiona is
+
+  for source_dirs use ("source");
+
+  for object_dir use "object";
+
+  for exec_dir use "binary";
+
+  -- enable more warnings: "-gnatwa"
+  -- optimization level 2: "-O2"
+  -- assertions enabled: "-gnata"
+  package Compiler is
+    for Default_Switches ("Ada") use ("-gnatwa", "-O2", "-gnata");
+  end Compiler;
+
+  package Builder is
+    for Executable ("fiona_main.adb") use "fiona";
+  end Builder;
+
+  for main use ("fiona_main.adb");
+
+end pr_fiona;
