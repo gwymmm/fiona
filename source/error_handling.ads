@@ -9,4 +9,6 @@ package Error_Handling is
   -- with line number info
   function Error_Msg(Line_Number: in Positive; Msg: in String) return String;
 
+  procedure Print(Error_Message: in String);
+
 end Error_Handling;

@@ -1,5 +1,4 @@
 with Ada.Containers.Ordered_Maps;
-with Ada.Strings.Unbounded;
 
 package Cmd_Args.Lexer is
 
@@ -16,8 +15,6 @@ package Cmd_Args.Lexer is
   -- Get_Token_Value for (1) flags and (2) char sequences
 
 private
-
-  use Ada.Strings.Unbounded;
 
   -- key type can't be an indefinite type like String, so take Unbounded String
   package Option_Map is new Ada.Containers.Ordered_Maps(
@@ -36,7 +33,7 @@ private
   type Token is
     record
       Kind: Token_Kind := End_of_Arguments;
-      Flag_Value: Flags := Flag_Help;
+      Flag_Value: Flags := Flag_Help_Set;
       Char_Sequence_Value: Unbounded_String := To_Unbounded_String("???");
     end record;
 
