@@ -1,12 +1,13 @@
-with Ada.Text_IO; use Ada.Text_IO;
+with Cmd_Args;
 
 package body Fiona is
 
   procedure Run_Main is
-
+    Exec_Opts: Cmd_Args.Execution_Options;
   begin
-    Put_Line("Test Fiona Main.");
-    raise Doom;
+
+    Cmd_Args.Parser.Read_Command_Line_Arguments(Exec_Opts);
+
   end Run_Main;
 
 end Fiona;

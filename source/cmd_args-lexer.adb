@@ -3,23 +3,25 @@ with Ada.Command_Line;
 package body Cmd_Args.Lexer is
 
   procedure Init(Lexer: out Lexer_State) is
-
-    Number_of_Arguments: constant Natural := Ada.Command_Line.Argument_Count;
-
   begin
 
-    if Number_of_Arguments = 0 then
-      Lexer.Arguments_Left := False;
-      return;
-    end if;
-
-    -- at least one command line argument was passed
+    Lexer.Number_of_Arguments := Ada.Command_Line.Argument_Count;
     Lexer.Current_Argument_Index := 1;
-  end Init;
 
-  function Has_Arguments_Left(Lexer: in Lexer_State) return Boolean is
-  begin
-    return Lexer.Arguments_Left;
-  end Has_Arguments_Left;
+    Insert(Lexer.String_to_Option_Map,
+      To_Unbounded_String("score"), Option_Score);
+    Insert(Lexer.String_to_Option_Map,
+      To_Unbounded_String("compare"), Option_Compare);
+
+    Insert(Lexer.String_to_Option_Map,
+      To_Unbounded_String("-h"), Flag_Help);
+    Insert(Lexer.String_to_Option_Map,
+      To_Unbounded_String("--help"), Flag_Help);
+    Insert(Lexer.String_to_Option_Map,
+      To_Unbounded_String("-v"), Flag_Verbose);
+    Insert(Lexer.String_to_Option_Map,
+      To_Unbounded_String("--verbose"), Flag_Verbose);
+
+  end Init;
 
 end Cmd_Args.Lexer;
