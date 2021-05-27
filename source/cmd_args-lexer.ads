@@ -3,7 +3,7 @@ with Ada.Containers.Ordered_Maps;
 package Cmd_Args.Lexer is
 
   type Lexer_State is private;
-  type Token is private;
+  type Token_Type is private;
 
   -- since flags can come in any order it would be tedious to implement each
   -- kind of flag in the grammar, so there is the more generic 'Flag' token.
@@ -11,6 +11,10 @@ package Cmd_Args.Lexer is
     End_of_Arguments);
 
   procedure Init(Lexer: out Lexer_State);
+
+  procedure Next_Token(Lexer: in out Lexer_State; Token: out Token_Type);
+
+  function Get_Kind(Token: in Token_Type) return Token_Kind;
 
   -- Get_Token_Value for (1) flags and (2) char sequences
 
@@ -30,7 +34,7 @@ private
       String_to_Option_Map : Map := Empty_Map;
     end record;
 
-  type Token is
+  type Token_Type is
     record
       Kind: Token_Kind := End_of_Arguments;
       Flag_Value: Flags := Flag_Help_Set;

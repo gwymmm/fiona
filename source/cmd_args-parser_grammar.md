@@ -21,7 +21,7 @@ FLAGS     -h, --help    'print help message'
 
 
 ```
-  BEGIN :=
+  START :=
     <score option> FLAGS_OR_INPUT
     <compare option> FLAGS_OR_INPUT
     <flag> FLAGS_OR_INPUT
@@ -32,5 +32,5 @@ FLAGS     -h, --help    'print help message'
     <char sequence> END
 
   END :=
-    <end of arguments>
+    <end of arguments> STOP
 ```
