@@ -2,10 +2,10 @@ with Ada.Command_Line;
 
 package body Cmd_Args.Lexer is
 
-  function Get_Kind(Token: in Token_Type) return Token_Kind is
-  begin
-    return Token.Kind;
-  end Get_Kind;
+  --function Get_Kind(Token: in Token_Type) return Token_Kind is
+  --begin
+  --  return Token.Kind;
+  --end Get_Kind;
 
   procedure Init(Lexer: out Lexer_State) is
   begin

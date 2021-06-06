@@ -16,6 +16,12 @@ package Cmd_Args.Lexer is
 
   function Get_Kind(Token: in Token_Type) return Token_Kind;
 
+  function Get_Value(Token: in Token_Type) return Flags
+    with Pre => ( Get_Kind(Token) = Flag );
+
+  function Get_Value(Token: in Token_Type) return Unbounded_String
+    with Pre => ( Get_Kind(Token) = Char_Sequence );
+
   -- Get_Token_Value for (1) flags and (2) char sequences
 
 private
@@ -40,5 +46,12 @@ private
       Flag_Value: Flags := Flag_Help_Set;
       Char_Sequence_Value: Unbounded_String := To_Unbounded_String("???");
     end record;
+
+  function Get_Kind(Token: in Token_Type) return Token_Kind is (Token.Kind);
+
+  function Get_Value(Token: in Token_Type) return Flags is (Token.Flag_Value);
+
+  function Get_Value(Token: in Token_Type) return Unbounded_String is
+    (Token.Char_Sequence_Value);
 
 end Cmd_Args.Lexer;

@@ -29,8 +29,8 @@ FLAGS     -h, --help    'print help message'
 
   FLAGS_OR_INPUT :=
     <flag> FLAGS_OR_INPUT
-    <char sequence> END
+    <char sequence> EXPECT_END
 
-  END :=
+  EXPECT_END :=
     <end of arguments> STOP
 ```
